@@ -3,6 +3,13 @@
 ## Resumen
 La aplicación desarrollada tiene como objetivo gestionar y controlar las entregas de alimentos durante una jornada especial de donación llevada a cabo por un reconocido restaurante. El sistema permite a los colaboradores del restaurante registrar a los residentes de la región a través de un formulario en una aplicación web. Los datos recopilados son nombre, apellidos, teléfono, correo, edad, dirección, confirmacion de la comida entregada y observaciones. En esta se pueden listar, agregar, borrrar y actualizarr los datos de los residentes, ademas de filtrar por Id, nombre o correcto electronico y tambien organizar por edad (de mayor a menor) y nombre (de la A a la Z)
 
+## Pasos para montar en un entorno
+1. descargar del repositorio
+2. Preparar un entorno virtual
+3. Instalar las dependnecial que estan en el archivo *requirements.txt*
+4. crear un archivo .env donde se colocaran las variables de entorno necesarias para la conexion de base de datos
+5. proceder a inicializar la aplicacion en el entorno de pruebas o realizar configuracion para montar een un entorno real
+
 ## Librerias Usadas
 - Flask: Framework que proporciona una estructura robusta y modular para la API, permitiendo un desarrollo ágil y eficiente.
 
@@ -13,6 +20,9 @@ La aplicación desarrollada tiene como objetivo gestionar y controlar las entreg
 - Flask-SQLAlchemy: es una extensión para Flask que agrega soporte para SQLAlchemy a su aplicación. Simplifica el uso de SQLAlchemy con Flask mediante la configuración de objetos comunes y patrones para usar esos objetos, como una sesión vinculada a cada solicitud web, modelos, y motores.
 
 - Flask-Cors: es permitir el intercambio de recursos entre dominios diferentes, lo cual es esencial para aplicaciones web que utilizan servicios o recursos alojados en servidores externos.
+
+- python-dotenv: biblioteca de Python que se utiliza para cargar variables de entorno desde un archivo llamado ".env" en tu proyecto. Las variables de entorno son útiles para almacenar configuraciones sensibles, como claves API, tokens, y otros valores que no deberían estar expuestos en tu código fuente.
+
 
 ## Estructura del proyecto
 - **/src**  *(Contiene los archivos principales de la aplicación)*
@@ -25,9 +35,11 @@ La aplicación desarrollada tiene como objetivo gestionar y controlar las entreg
   - **/utils**
     - field_validation.py  *(Utilidades para validar campos en la aplicación)*
     - respons_utils.py *(Utilidad para estandarizar respuestas JSON)*
-    
+    **/migrations** (Contiene las migraciones de las tablas necesarias)
   - config.py *(Archivo de configuración de la aplicación)*
   - app.py *(Punto de entrada principal de la aplicación)*
+- requierements.txt (todas las librerias con las versiones utilizadas)
+
 
 ## URLs
 ##### Obtener todos los residentes existentes en la base de datos.
@@ -52,7 +64,6 @@ Esta ruta se utiliza para agregar un nuevo residente a la base de datos utilizan
     "observation": "None",
     "phone": "1555555555"
 }
-
 
 ##### Eliminar un Residente por ID
 https://www.ejemplo.com/api/delete/numero_id

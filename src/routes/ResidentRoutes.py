@@ -43,8 +43,6 @@ def get_resident(parameter):
 def add_resident():
 
     try:
-        
-        #en este punto se deben hacer las validaciones de los datos
         id = str(uuid.uuid4())
         name = request.json['name']
         last_name = request.json['last_name']
@@ -54,11 +52,6 @@ def add_resident():
         address = request.json['address']
         delivered_food = request.json['delivered_food']
         observation = request.json['observation']
-        
-        # # Verificar si los campos esenciales están presentes en la solicitud
-        # required_fields = ['name', 'last_name', 'email', 'age', 'delivered_food']
-        # if not all(field in request.json for field in required_fields):
-        #     return jsonify({'message': 'Campos esenciales faltantes'}), 400
         
         #validacion de los datos
         if not Fiel_validation.validate_name(name):
@@ -109,7 +102,6 @@ def delete_resident(id):
             return jsonify(Response.success_response("Operation completed successfully",resident.id))
         else:
             return jsonify(Response.error_response("No Resident deleted",status_code=400,error_details=str(ex))),400
-            # return jsonify({'message': 'No Resident deleted'}),404
 
     except Exception as ex:
         return jsonify(Response.error_response("Error or delete",status_code=500,error_details=str(ex))),500
@@ -122,7 +114,6 @@ def update_resident(id):
         if id != request.json.get('id'):
             return jsonify({'message': 'Changing the ID is not allowed'}), 400
         
-        #en este punto se deben hacer las validaciones de los datos
         name = request.json['name']
         last_name = request.json['last_name']
         phone = request.json['phone']

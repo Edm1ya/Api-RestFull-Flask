@@ -1,21 +1,12 @@
-# from decouple import config
+from dotenv import load_dotenv
+import os
 
-# class config:
-#     SECRET_KEY = config('SECRET_KEY')
+load_dotenv()
 
+user = os.environ['PGSQL_USER']
+host = os.environ['PGSQL_HOST']
+password = os.environ['PGSQL_PASSWORD']
+database = os.environ['PGSQL_DATABASE']
+port = os.environ['PGSQL_PORT']
 
-# class DevelopmentConfig(config):
-#     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123@localhost:5432/python_flask_rest_api'
-#     DEBUG = True
-
-# config={
-#     'development': DevelopmentConfig
-# }
-
-# class BaseConfig():
-#     SECRET_KEY = "key"
-#     DEBUG = True
-
-# class DevConfig(BaseConfig):
-#     SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:123@localhost:5432/python_flask_rest_api'
-#     DEBUG = True
+SQLALCHEMY_DATABASE_URI = f'postgresql://{user}:{password}@{host}:{port}/{database}'

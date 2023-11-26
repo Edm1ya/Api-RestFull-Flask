@@ -14,7 +14,7 @@ class ResidentModel(db.Model):
     address = db.Column(db.String, nullable = False)
     delivered_food = db.Column(db.Boolean, default=False, nullable=False)
     observation = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable = False)
 
     def __init__(self, id, name=None, last_name = None, phone=None, email=None, age =None, address=None, delivered_food=None, observation=None ) -> None:
         self.id = id

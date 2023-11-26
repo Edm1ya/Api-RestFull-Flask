@@ -3,7 +3,7 @@ from sqlalchemy import text
 
 
 class ResidentController():
-
+    
     @classmethod
     def get_residents(self,page, per_page):
         try:
@@ -18,16 +18,6 @@ class ResidentController():
         except Exception as ex:
             raise Exception( ex)
         
-    #validar si quitarlo
-    @classmethod
-    def get_resident(self, id):
-        try:
-            resident = ResidentModel.query.get(id)
-        
-        except Exception as ex:
-            raise Exception( ex)
-    
-
     @classmethod
     def search_residents(self, target, page, per_page):
         try:
